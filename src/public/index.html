@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css">
+  <title>Macroeconomic indicators</title>
+</head>
+<body>
+  <div id="root">
+    <h1>Application have next routes:</h1>
+    <ul> 
+      <li>
+        <a href="/stocks">/stocks</a>
+        <ul>
+          <li class="under-route">
+            <a href="/stocks/date/14-06-2019">/stocks/date/14-06-2019</a>
+            <div>
+              <span>Description: get document by :date</span>
+              <span>Structure:
+                <b>/stocks/date/:date</b>
+              </span>
+              <span>Existing params:
+                <b>year | month | day</b>
+              </span>
+            </div>
+          </li>
+          <li class="under-route">
+            <a href="/stocks/country/Europe">/stocks/country/Europe</a>
+            <div>
+              <span>Description: get data from all documents by :country</span>
+              <span>Structure:<b>/stocks/country/:country</b></span>
+              <span>Existing params:
+                <b>Europe | USA | Asia | Australia | Africa</b>
+              </span>
+            </div>
+          </li>
+          <li class="under-route">
+            <a href="/stocks/country/Europe/stock=CAC 40">/stocks/country/Europe/stock=CAC 40</a>
+            <div>
+              <span>Description: get data by :country from all documents -> by :param from objs of array</span>
+              <span>Structure:
+                <b>/stocks/country/:country/:param</b>
+              </span>
+              <span>Existing params:
+                <b>id=value | stock=value | value=value</b>
+              </span>
+            </div>
+            </li>
+        </ul>
+      </li>
+
+      <li>/currency</li>
+      <li>/inflation</li>
+      <li>/commodities</li>
+      <li>/interest-rate</li>
+      <li>/sales-tax-rate</li>
+      <li>/corruption-rank</li>
+      <li>/corporate-tax-rate</li>
+      <li>/government-debt-to-GDP</li>
+      <li>/personal-income-tax-rate</li>
+    </ul>
+  </div>
+</body>
+</html>

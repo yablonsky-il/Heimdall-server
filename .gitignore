@@ -1,0 +1,4 @@
+/node_modules
+/med-api-v1
+/dist
+.DS_Store
