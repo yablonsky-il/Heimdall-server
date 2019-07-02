@@ -1,9 +1,9 @@
 import express from 'express';
 import * as R from 'ramda';
 
-import { db } from '../../connect-to-db';
+import { db } from '../../services/connect-to-db';
 import { getHash } from '../../helpers/sign-up/get-hash';
-import { SIGN_UP_CODES } from '../../constants';
+import { SIGN_UP_CODES, cookieAge } from '../../constants';
 
 export const router = express.Router();
 
@@ -30,12 +30,16 @@ router.post('/sign-up', (req, res) => {
             password: hashPassword,
             date,
           })
-          .then(() => res.status(200).send({
-            status: 1,
-            message: SIGN_UP_CODES[1],
-            profile: {
-              name, surname, email,
-          }}))
+          .then(() => {
+            res.cookie('profile', `email=${email};isLoged=true`, { maxAge: cookieAge });
+
+            return res.status(200).send({
+              status: 1,
+              message: SIGN_UP_CODES[1],
+              profile: {
+                name, surname, email,
+            }});
+          })
           .catch(err => res.status(500).send(err));
       }
 

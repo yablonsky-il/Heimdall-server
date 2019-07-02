@@ -1,6 +1,7 @@
 import express from 'express';
+import * as R from 'ramda';
 
-import { db } from '../../connect-to-db';
+import { db } from '../../services/connect-to-db';
 
 export const router = express.Router();
 const mainParam = 'stocks';
@@ -49,6 +50,8 @@ router.get(`/${mainParam}/country/:country/:param`, (req, res) => {
   const { country, param } = req.params;
   const query = `stocks.${country}`;
   const [key, value] = param.split('=');
+
+  if (R.isNil(value)) return res.status(200).json(data);
 
   db.collection('stocks')
     .distinct(query)

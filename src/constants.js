@@ -22,3 +22,11 @@ export const SIGN_IN_CODES = {
   0: 'Invalid email or password',
   1: 'Authentication is succeed',
 };
+
+export const COOKIES_CODES = {
+  0: 'Cookies are not exist',
+  1: 'Authentication is succeed',
+};
+
+// Year
+export const cookieAge = 1000 * 60 * 60 * 24 * 30 * 12;

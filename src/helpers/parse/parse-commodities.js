@@ -1,4 +1,4 @@
-import { parseTable } from './util';
+import { parseTable } from './parse-helpers';
 import { getDate } from '../util';
 
 const keys = [

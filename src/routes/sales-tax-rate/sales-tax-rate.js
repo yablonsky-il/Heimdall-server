@@ -1,12 +1,13 @@
 import express from 'express';
+import * as R from 'ramda';
 
-import { db } from '../../connect-to-db';
+import { db } from '../../services/connect-to-db';
 
 export const router = express.Router();
-const mainParam = 'sales-tax-rate';
+const indicator = 'sales-tax-rate';
 
 /* get all documents from collection */
-router.get(`/${mainParam}`, (req, res) => {
+router.get(`/${indicator}`, (req, res) => {
   db.collection('sales_tax_rate')
     .find()
     .toArray()
@@ -18,7 +19,7 @@ router.get(`/${mainParam}`, (req, res) => {
 * get document by :date
 * example date: 10-06-2019
 */
-router.get(`/${mainParam}/date/:date`, (req, res) => {
+router.get(`/${indicator}/date/:date`, (req, res) => {
   const { date } = req.params;
   const [day, month, year] = date.split('-');
 
@@ -34,9 +35,12 @@ router.get(`/${mainParam}/date/:date`, (req, res) => {
 * param:   id   | country       | rate
 * example: id=3 | country=Дания | rate=25.00
 */
-router.get(`/${mainParam}/:param`, (req, res) => {
+router.get(`/${indicator}/:param`, (req, res) => {
+  console.log(3);
   const { param } = req.params;
   const [key, value] = param.split('=');
+
+  if (R.isNil(value)) return res.status(200).json(data);
 
   db.collection('sales_tax_rate')
     .distinct('salesTaxRate')

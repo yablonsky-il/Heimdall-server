@@ -1,8 +1,7 @@
 import express from 'express';
 
+import { router as authentication } from './authentication/index';
 import { router as stocks } from './stocks/stocks';
-import { router as signIn } from './sign-in/sign-in';
-import { router as signUp } from './sign-up/sign-up';
 import { router as currency } from './currency/currency';
 import { router as inflation } from './inflation/inflation';
 import { router as commodities } from './commodities/commodities';
@@ -15,14 +14,13 @@ import { router as personalIncomeTaxRate } from './personal-income-tax-rate/pers
 
 export const router = express.Router();
 
-router.use(signIn);
-router.use(signUp);
 router.use(stocks);
 router.use(currency);
 router.use(inflation);
 router.use(commodities);
 router.use(interestRate);
 router.use(salesTaxRate);
+router.use(authentication);
 router.use(corrupationRank);
 router.use(corporateTaxRate);
 router.use(governmentDebtToGDP);

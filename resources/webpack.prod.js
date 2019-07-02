@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -9,5 +10,6 @@ module.exports = merge(common, {
       parallel: true,
       extractComments: true
     }),
+    new BundleAnalyzerPlugin(),
   ]
 });

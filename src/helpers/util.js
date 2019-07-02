@@ -22,3 +22,8 @@ export const getDate = () => {
 
   return { day, month, year };
 }
+
+export const throwError = (err) => {
+  console.log(err);
+  throw err;
+};
