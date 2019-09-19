@@ -1,16 +1,16 @@
 export const ENV = {
-  DEVELOPMENT:'development',
+  DEVELOPMENT: 'development',
   PRODUCTION: 'production',
-}
+};
 
 export const WEEK_DAYS = {
-  'Sunday': 0,
-  'Monday': 1,
-  'Tuesday': 2,
-  'Wednesday': 3,
-  'Thursday': 4,
-  'Friday': 5,
-  'Saturday': 6,
+  Sunday: 0,
+  Monday: 1,
+  Tuesday: 2,
+  Wednesday: 3,
+  Thursday: 4,
+  Friday: 5,
+  Saturday: 6,
 };
 
 export const SIGN_UP_CODES = {
@@ -30,3 +30,5 @@ export const COOKIES_CODES = {
 
 // Year
 export const cookieAge = 1000 * 60 * 60 * 24 * 30 * 12;
+
+export const { PARSE_URL } = process.env;

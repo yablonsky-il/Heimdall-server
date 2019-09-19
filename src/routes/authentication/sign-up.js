@@ -17,7 +17,7 @@ router.post('/sign-up', (req, res) => {
 
   db.collection('users')
     .findOne({ email })
-    .then(user => {
+    .then((user) => {
       if (R.isNil(user)) {
         const date = new Date();
         const hashPassword = getHash(password, String(date));
@@ -38,7 +38,8 @@ router.post('/sign-up', (req, res) => {
               message: SIGN_UP_CODES[1],
               profile: {
                 name, surname, email,
-            }});
+              },
+            });
           })
           .catch(err => res.status(500).send(err));
       }

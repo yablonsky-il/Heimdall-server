@@ -6,8 +6,9 @@ import { CronJob } from 'cron';
 import { db } from '../../services/connect-to-db';
 import { parseAnyIndicator } from '../../helpers/parse/parse-any-indicator';
 import { getDate, throwError } from '../../helpers/util';
+import { PARSE_URL } from '../../constants';
 
-const url = 'https://ru.tradingeconomics.com/country-list/inflation-rate';
+const url = `${PARSE_URL}/country-list/inflation-rate`;
 
 const requestInflations = () => request(url)
   .then(document => parseAnyIndicator(cheerio.load(document)))

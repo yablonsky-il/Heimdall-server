@@ -6,8 +6,9 @@ import { CronJob } from 'cron';
 import { db } from '../../services/connect-to-db';
 import { parseStocks } from '../../helpers/parse/parse-stocks';
 import { checkDay, throwError } from '../../helpers/util';
+import { PARSE_URL } from '../../constants';
 
-const url = 'https://ru.tradingeconomics.com/stocks';
+const url = `${PARSE_URL}/stocks`;
 
 const requestStocks = () => request(url)
   .then(document => parseStocks(cheerio.load(document)))
@@ -15,11 +16,10 @@ const requestStocks = () => request(url)
     db.collection('stocks')
       .insertOne(data)
       .then(success => console.log(success, 'success!'))
-      .catch(err => throwError(err))
+      .catch(err => throwError(err));
   })
-  .catch(err => throwError(err))
+  .catch(err => throwError(err));
 
 /* Make request at 23:00 every evening (besides Saturday and Sunday) */
 export const job = new CronJob('0 23 * * *', () =>
-  checkDay() ? requestStocks() : false
-);
+  checkDay() ? requestStocks() : false);

@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import express from 'express';
 import * as R from 'ramda';
 
@@ -63,7 +64,7 @@ router.get(`/${indicator}/sphere/:sphere/:param`, (req, res) => {
   const query = `commodities.${sphere}`;
   const [key, value] = param.split('=');
 
-  if (R.isNil(value)) return res.status(200).json(data);
+  if (R.isNil(value)) return res.status(200).json([]);
 
   db.collection('commodities')
     .distinct(query)

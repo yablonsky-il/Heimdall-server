@@ -11,9 +11,9 @@ const keys = [
 
 export const parseCommodities = ($) => {
   const result = $('.panel').children('.table-responsive');
-
   const data = {};
-  for (let i = 1; i < result.length - 1; i++) {
+
+  for (let i = 1; i < result.length - 1; i += 1) {
     data[keys[i - 1]] = parseTable(
       result.eq(i).find('tbody').children(),
       'commoditie',
@@ -24,4 +24,4 @@ export const parseCommodities = ($) => {
     date: getDate(),
     commodities: data,
   };
-}
+};

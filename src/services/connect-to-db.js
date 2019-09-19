@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import { MongoClient } from 'mongodb';
 
+import { throwError } from '../helpers/util';
+
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME,
 } = process.env;
@@ -12,11 +14,9 @@ export const connectToDB = initServer => MongoClient.connect(
   `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
   { useNewUrlParser: true },
 )
-  .then(client => {
+  .then((client) => {
     console.log('Connected to MongoDB!');
     db = client.db(DB_NAME);
     initServer();
   })
-  .catch(err => {
-    console.log(err);
-  });
+  .catch(err => throwError(err));
