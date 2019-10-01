@@ -23,7 +23,9 @@ router.post('/sign-in', (req, res) => {
     .then((user) => {
       if (R.isNil(user)) return profileNotFound(res);
 
-      const { name, surname, email, password, date } = user;
+      const {
+        name, surname, email, password, date,
+      } = user;
       const hashPassword = getHash(enteredPassword, String(date));
 
       if (password === hashPassword) {

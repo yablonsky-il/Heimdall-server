@@ -1,27 +1,80 @@
 {
-  "extends": ["airbnb", "prettier", "prettier/react"],
-  "plugins": ["prettier"],
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "plugin:ramda/recommended"
+  ],
+  "plugins": [
+    "ramda",
+    "jest",
+    "prettier"
+  ],
+  "globals": {
+    "document": true,
+    "window": true,
+    "shallow": false,
+    "render": false,
+    "mount": false,
+    "APP_CONFIG": true
+  },
   "rules": {
-    "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": [
-      1,
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": "block-like" }
+    ],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
+    "no-underscore-dangle": 0,
+    "lines-between-class-members": 0,
+    "implicit-arrow-linebreak": 0,
+    "jsx-a11y/label-has-for": 0,
+    "no-debugger": 1,
+    "comma-dangle": ["error", "always-multiline"],
+    "max-len": [
+      "error",
+      120,
+      2,
       {
-        "extensions": [".js", ".jsx"]
+        "ignoreUrls": true,
+        "ignoreComments": false,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
       }
     ],
-    "react/prop-types": 0,
-    "no-underscore-dangle": 0,
-    "import/imports-first": ["error", "absolute-first"],
-    "import/newline-after-import": "error"
+    "no-mixed-operators": 0,
+    "no-confusing-arrow": 0,
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "import/no-extraneous-dependencies": 0,
+    "no-array-constructor": 0,
+    "import/prefer-default-export": 0,
+    "jest/no-disabled-tests": 2,
+    "jest/expect-expect": 2,
+    "jest/no-focused-tests": 2,
+    "jest/no-identical-title": 2,
+    "jest/no-jest-import": 2,
+    "jest/valid-expect-in-promise": 2,
+    "jest/valid-describe": 2,
+    "jest/prefer-to-have-length": 2,
+    "jest/prefer-to-be-undefined": 2,
+    "jest/prefer-to-be-null": 2,
+    "jest/valid-expect": 2,
+    "jest/consistent-test-it": [2,
+    {
+      "fn": "test",
+      "withinDescribe": "test"
+    }]
   },
-  "globals": {
-    "window": true,
-    "document": true,
-    "localStorage": true,
-    "FormData": true,
-    "FileReader": true,
-    "Blob": true,
-    "navigator": true
-  },
-  "parser": "babel-eslint"
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true
+  }
 }

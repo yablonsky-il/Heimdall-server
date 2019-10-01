@@ -1,8 +1,9 @@
+/* eslint-disable newline-per-chained-call */
 export const parseAnyIndicator = ($) => {
   const result = $('#ctl00_ContentPlaceHolder1_ctl01_UpdatePanel1').find('tbody tr');
-
   const arr = [];
-  for (let i = 0; i < result.length; i++) {
+
+  for (let i = 0; i < result.length; i += 1) {
     arr.push({
       id: i,
       country: result.eq(i).children().eq(0).text().trim(),

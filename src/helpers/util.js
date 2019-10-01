@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as R from 'ramda';
 import { WEEK_DAYS } from '../constants';
 
@@ -21,7 +22,7 @@ export const getDate = () => {
   const year = date.getFullYear().toString();
 
   return { day, month, year };
-}
+};
 
 export const throwError = (err) => {
   console.log(err);

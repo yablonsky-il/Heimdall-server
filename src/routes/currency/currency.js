@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import express from 'express';
 import * as R from 'ramda';
 
@@ -51,7 +52,7 @@ router.get(`/${indicator}/:currency_type/:param`, (req, res) => {
   const query = `currencies.${currencyType}`;
   const [key, value] = param.split('=');
 
-  if (R.isNil(value)) return res.status(200).json(data);
+  if (R.isNil(value)) return res.status(200).json([]);
 
   db.collection('currency')
     .distinct(query)

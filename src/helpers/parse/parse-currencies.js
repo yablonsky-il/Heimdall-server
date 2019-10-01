@@ -14,9 +14,9 @@ const keys = [
 
 export const parseCurrencies = ($) => {
   const result = $('.panel').children('.table-responsive');
-
   const data = {};
-  for (let i = 0; i < NEEDED_AMOUNT_CURRENCIES; i++) {
+
+  for (let i = 0; i < NEEDED_AMOUNT_CURRENCIES; i += 1) {
     data[keys[i]] = parseTable(
       result.eq(i).find('tbody').children(),
       'currency',

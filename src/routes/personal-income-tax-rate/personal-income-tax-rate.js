@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import express from 'express';
 import * as R from 'ramda';
 
@@ -21,10 +22,10 @@ router.get(`/${indicator}`, (req, res) => {
 */
 router.get(`/${indicator}/date/:date`, (req, res) => {
   const { date } = req.params;
-  const [day, month, year] = date.split('-');
+  const year = R.last(date.split('-'));
 
   db.collection('personal_income_tax_rate')
-    .find({ date: { day, month, year } })
+    .find({ 'date.year': year })
     .toArray()
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).send(err));
@@ -38,8 +39,8 @@ router.get(`/${indicator}/date/:date`, (req, res) => {
 router.get(`/${indicator}/:param`, (req, res) => {
   const { param } = req.params;
   const [key, value] = param.split('=');
-  
-  if (R.isNil(value)) return res.status(200).json(data);
+
+  if (R.isNil(value)) return res.status(200).json([]);
 
   db.collection('personal_income_tax_rate')
     .distinct('personalIncomeTaxRate')

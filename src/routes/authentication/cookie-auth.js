@@ -11,7 +11,7 @@ const profileNotFound = res => res.status(200).send({
   message: 'Profile not found',
 });
 
-router.post('/cookie-auth', (req, res) => {  
+router.post('/cookie-auth', (req, res) => {
   const { profile } = req.cookies;
 
   if (R.isNil(profile)) {
@@ -31,6 +31,7 @@ router.post('/cookie-auth', (req, res) => {
         if (R.isNil(user)) return profileNotFound(res);
 
         const { name, surname, email } = user;
+
         return res.status(200).send({
           status: 1,
           message: SIGN_IN_CODES[1],
