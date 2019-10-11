@@ -7,7 +7,7 @@ module.exports = {
   entry: path.join(path.resolve(), 'src/server.js'),
   output: {
     path: path.resolve('dist'),
-    filename: 'server.js'
+    filename: 'server.js',
   },
   target: 'node',
   node: {
@@ -22,19 +22,19 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        }
+        },
       },
       {
         test: /\.html$/,
         use: [{ loader: 'html-loader' }]
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new CopyWebpackPlugin([{
-      from: path.resolve('src/public'),
+      from: path.resolve('public'),
       to: 'public',
-  }]),
+    }]),
     new CleanWebpackPlugin(),
-  ]
-}
+  ],
+};

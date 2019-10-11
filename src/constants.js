@@ -1,3 +1,5 @@
+export const { PARSE_URL } = process.env;
+
 export const ENV = {
   DEVELOPMENT: 'development',
   PRODUCTION: 'production',
@@ -12,6 +14,8 @@ export const WEEK_DAYS = {
   Friday: 5,
   Saturday: 6,
 };
+
+export const API_PARAM = 'api';
 
 export const SIGN_UP_CODES = {
   0: 'User with current email is already exist',
@@ -29,6 +33,4 @@ export const COOKIES_CODES = {
 };
 
 // Year
-export const cookieAge = 1000 * 60 * 60 * 24 * 30 * 12;
-
-export const { PARSE_URL } = process.env;
+export const COOKIE_AGE = 1000 * 60 * 60 * 24 * 30 * 12;

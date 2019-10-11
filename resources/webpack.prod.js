@@ -8,7 +8,7 @@ module.exports = merge(common, {
   plugins: [
     new UglifyJsPlugin({
       parallel: true,
-      extractComments: true
+      extractComments: true,
     }),
     new BundleAnalyzerPlugin(),
   ]

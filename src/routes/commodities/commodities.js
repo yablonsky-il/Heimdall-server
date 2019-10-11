@@ -3,6 +3,7 @@ import express from 'express';
 import * as R from 'ramda';
 
 import { db } from '../../services/connect-to-db';
+import { API_PARAM } from '../../constants';
 
 export const router = express.Router();
 const indicator = 'commodities';
@@ -12,7 +13,7 @@ const indicator = 'commodities';
  * @return {array} -> [{},{},...]
  * @example -> [{ id: string, date: object, commodities: array }, ...]
  */
-router.get(`/${indicator}`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}`, (req, res) => {
   db.collection('commodities')
     .find()
     .toArray()
@@ -26,7 +27,7 @@ router.get(`/${indicator}`, (req, res) => {
  * @return {array} -> [{},{},...]
  * @example -> [{ id: number, commoditie: string, value: string }, ...]
  */
-router.get(`/${indicator}/sphere/:sphere`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/sphere/:sphere`, (req, res) => {
   const { sphere } = req.params;
   const query = `commodities.${sphere}`;
 
@@ -42,7 +43,7 @@ router.get(`/${indicator}/sphere/:sphere`, (req, res) => {
  * @return {object}
  * @example -> { id: string, date: object, commodities: array }
  */
-router.get(`/${indicator}/date/:date`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/date/:date`, (req, res) => {
   const { date } = req.params;
   const [day, month, year] = date.split('-');
 
@@ -59,7 +60,7 @@ router.get(`/${indicator}/date/:date`, (req, res) => {
  * @return {array} -> [{},{},...]
  * @example -> [{ id: number, commoditie: string, value: string }, ...]
  */
-router.get(`/${indicator}/sphere/:sphere/:param`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/sphere/:sphere/:param`, (req, res) => {
   const { sphere, param } = req.params;
   const query = `commodities.${sphere}`;
   const [key, value] = param.split('=');
