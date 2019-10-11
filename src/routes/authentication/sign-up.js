@@ -3,11 +3,11 @@ import * as R from 'ramda';
 
 import { db } from '../../services/connect-to-db';
 import { getHash } from '../../helpers/sign-up/get-hash';
-import { SIGN_UP_CODES, cookieAge } from '../../constants';
+import { SIGN_UP_CODES, COOKIE_AGE, API_PARAM } from '../../constants';
 
 export const router = express.Router();
 
-router.post('/sign-up', (req, res) => {
+router.post(`/${API_PARAM}/sign-up`, (req, res) => {
   const {
     'sign-up-form-name': name,
     'sign-up-form-surname': surname,
@@ -31,7 +31,7 @@ router.post('/sign-up', (req, res) => {
             date,
           })
           .then(() => {
-            res.cookie('profile', `email=${email};isLoged=true`, { maxAge: cookieAge });
+            res.cookie('profile', `email=${email};isLoged=true`, { maxAge: COOKIE_AGE });
 
             return res.status(200).send({
               status: 1,

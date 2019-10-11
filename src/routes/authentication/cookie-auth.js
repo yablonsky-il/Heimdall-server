@@ -2,7 +2,7 @@ import express from 'express';
 import * as R from 'ramda';
 
 import { db } from '../../services/connect-to-db';
-import { SIGN_IN_CODES, COOKIES_CODES } from '../../constants';
+import { SIGN_IN_CODES, COOKIES_CODES, API_PARAM } from '../../constants';
 
 export const router = express.Router();
 
@@ -11,7 +11,7 @@ const profileNotFound = res => res.status(200).send({
   message: 'Profile not found',
 });
 
-router.post('/cookie-auth', (req, res) => {
+router.post(`/${API_PARAM}/cookie-auth`, (req, res) => {
   const { profile } = req.cookies;
 
   if (R.isNil(profile)) {

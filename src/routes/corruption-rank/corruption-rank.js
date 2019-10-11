@@ -3,12 +3,13 @@ import express from 'express';
 import * as R from 'ramda';
 
 import { db } from '../../services/connect-to-db';
+import { API_PARAM } from '../../constants';
 
 export const router = express.Router();
 const indicator = 'corruption-rank';
 
 /* get all documents from collection */
-router.get(`/${indicator}`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}`, (req, res) => {
   db.collection('corruption_rank')
     .find()
     .toArray()
@@ -20,7 +21,7 @@ router.get(`/${indicator}`, (req, res) => {
 * get document by :date
 * example date: 10-06-2019
 */
-router.get(`/${indicator}/date/:date`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/date/:date`, (req, res) => {
   const { date } = req.params;
   const year = R.last(date.split('-'));
 
@@ -36,7 +37,7 @@ router.get(`/${indicator}/date/:date`, (req, res) => {
 * param:   id   | country         | rank
 * example: id=0 | country=Израиль | rank=34.00
 */
-router.get(`/${indicator}/:param`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/:param`, (req, res) => {
   const { param } = req.params;
   const [key, value] = param.split('=');
 

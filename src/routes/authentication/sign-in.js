@@ -3,7 +3,7 @@ import * as R from 'ramda';
 
 import { db } from '../../services/connect-to-db';
 import { getHash } from '../../helpers/sign-up/get-hash';
-import { SIGN_IN_CODES, cookieAge } from '../../constants';
+import { SIGN_IN_CODES, COOKIE_AGE, API_PARAM } from '../../constants';
 
 export const router = express.Router();
 
@@ -12,7 +12,7 @@ const profileNotFound = res => res.status(200).send({
   message: SIGN_IN_CODES[0],
 });
 
-router.post('/sign-in', (req, res) => {
+router.post(`/${API_PARAM}/sign-in`, (req, res) => {
   const {
     'sign-up-form-email': enteredEmail,
     'sign-up-form-password': enteredPassword,
@@ -29,7 +29,7 @@ router.post('/sign-in', (req, res) => {
       const hashPassword = getHash(enteredPassword, String(date));
 
       if (password === hashPassword) {
-        res.cookie('profile', `email=${email};isLoged=true`, { maxAge: cookieAge });
+        res.cookie('profile', `email=${email};isLoged=true`, { maxAge: COOKIE_AGE });
 
         return res.status(200).send({
           status: 1,

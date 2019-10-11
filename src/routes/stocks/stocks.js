@@ -3,12 +3,13 @@ import express from 'express';
 import * as R from 'ramda';
 
 import { db } from '../../services/connect-to-db';
+import { API_PARAM } from '../../constants';
 
 export const router = express.Router();
 const indicator = 'stocks';
 
 /* get all documents from collection */
-router.get(`/${indicator}`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}`, (req, res) => {
   db.collection('stocks')
     .find()
     .toArray()
@@ -20,7 +21,7 @@ router.get(`/${indicator}`, (req, res) => {
 * get document by :date
 * example date: 10-06-2019
 */
-router.get(`/${indicator}/date/:date`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/date/:date`, (req, res) => {
   const { date } = req.params;
   const [day, month, year] = date.split('-');
 
@@ -32,7 +33,7 @@ router.get(`/${indicator}/date/:date`, (req, res) => {
 });
 
 /* get data from all documents by :country */
-router.get(`/${indicator}/country/:country`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/country/:country`, (req, res) => {
   const { country } = req.params;
   const query = `stocks.${country}`;
 
@@ -47,7 +48,7 @@ router.get(`/${indicator}/country/:country`, (req, res) => {
 * param:   id   | stock        | value
 * example: id=0 | stock=CAC 40 | value=5,365
 */
-router.get(`/${indicator}/country/:country/:param`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/country/:country/:param`, (req, res) => {
   const { country, param } = req.params;
   const query = `stocks.${country}`;
   const [key, value] = param.split('=');

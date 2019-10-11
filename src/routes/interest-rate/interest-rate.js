@@ -3,12 +3,13 @@ import express from 'express';
 import * as R from 'ramda';
 
 import { db } from '../../services/connect-to-db';
+import { API_PARAM } from '../../constants';
 
 export const router = express.Router();
 const indicator = 'interest-rate';
 
 /* get all documents from collection */
-router.get(`/${indicator}`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}`, (req, res) => {
   db.collection('interest_rate')
     .find()
     .toArray()
@@ -20,7 +21,7 @@ router.get(`/${indicator}`, (req, res) => {
 * get document by :date
 * example date: 10-06-2019
 */
-router.get(`/${indicator}/date/:date`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/date/:date`, (req, res) => {
   const { date } = req.params;
   const [, month, year] = date.split('-');
 
@@ -39,7 +40,7 @@ router.get(`/${indicator}/date/:date`, (req, res) => {
 * param:   id   | country           | rate
 * example: id=1 | country=Аргентина | rate=69.24
 */
-router.get(`/${indicator}/:param`, (req, res) => {
+router.get(`/${API_PARAM}/${indicator}/:param`, (req, res) => {
   const { param } = req.params;
   const [key, value] = param.split('=');
 
