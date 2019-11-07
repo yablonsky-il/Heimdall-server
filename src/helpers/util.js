@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import crypto from 'crypto';
 import * as R from 'ramda';
 import { WEEK_DAYS } from '../constants';
 
@@ -27,4 +28,11 @@ export const getDate = () => {
 export const throwError = (err) => {
   console.log(err);
   throw err;
+};
+
+export const getHash = (password) => {
+  const hmac = crypto.createHash('sha256');
+  hmac.update(password);
+
+  return hmac.digest('hex');
 };
