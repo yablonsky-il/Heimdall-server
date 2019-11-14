@@ -4,7 +4,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  // entry: path.join(path.resolve(), 'src/server.js'),
   entry: path.join(path.resolve(), 'src/server.ts'),
   output: {
     path: path.resolve('dist'),
@@ -15,7 +14,6 @@ module.exports = {
     __dirname: false,
     __filename: false,
   },
-  externals: [nodeExternals()],
   resolve: {
     extensions: ['.ts', '.js'],
   },
@@ -24,13 +22,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: [{ loader: 'babel-loader' }],
       },
       {
-        test: /\.ts$/,
-        loader: 'ts-loader',
+        test: /\.ts?$/,
+        exclude: /node_modules/,
+        use: [{ loader: 'ts-loader' }],
       },
       {
         test: /\.html$/,
@@ -45,4 +42,5 @@ module.exports = {
     }]),
     new CleanWebpackPlugin(),
   ],
+  externals: [nodeExternals()],
 };

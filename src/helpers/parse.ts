@@ -2,9 +2,9 @@
 
 import { getDate } from './util';
 
-const NEEDED_CURRENCIES_AMOUNT = 6;
+const NEEDED_CURRENCIES_AMOUNT: number = 6;
 
-const comoditiesKeys = [
+const comoditiesKeys: ReadonlyArray<string> = [
   'energy',
   'agriculture',
   'livestock',
@@ -12,7 +12,7 @@ const comoditiesKeys = [
   'index',
 ];
 
-const currenciesKeys = [
+const currenciesKeys: ReadonlyArray<string> = [
   'topCurrencies',
   'crypto',
   'EURCross',
@@ -21,7 +21,7 @@ const currenciesKeys = [
   'JPYCross',
 ];
 
-const stocksKeys = [
+const stocksKeys: ReadonlyArray<string> = [
   'Europe',
   'USA',
   'Asia',
@@ -29,23 +29,23 @@ const stocksKeys = [
   'Africa',
 ];
 
-export const parseTable = (tbody, key) => {
-  const data = [];
+export const parseTable = (tbody, key): Array<any> => {
+  const arr: Array<any> = [];
 
   for (let i = 0; i < tbody.length; i += 1) {
-    data.push({
+    arr.push({
       id: i,
       [key]: tbody.eq(i).children().eq(1).text().trim(),
       value: tbody.eq(i).children().eq(2).text().trim(),
     });
   }
 
-  return data;
+  return arr;
 };
 
-export const parseAnyIndicator = ($) => {
+export const parseAnyIndicator = ($): Array<any> => {
   const result = $('#ctl00_ContentPlaceHolder1_ctl01_UpdatePanel1').find('tbody tr');
-  const arr = [];
+  const arr: Array<any> = [];
 
   for (let i = 0; i < result.length; i += 1) {
     arr.push({
@@ -60,10 +60,10 @@ export const parseAnyIndicator = ($) => {
 
 export const parseCommodities = ($) => {
   const result = $('.panel').children('.table-responsive');
-  const data = {};
+  const obj = {};
 
   for (let i = 1; i < result.length - 1; i += 1) {
-    data[comoditiesKeys[i - 1]] = parseTable(
+    obj[comoditiesKeys[i - 1]] = parseTable(
       result.eq(i).find('tbody').children(),
       'commoditie',
     );
@@ -71,7 +71,7 @@ export const parseCommodities = ($) => {
 
   return {
     date: getDate(),
-    commodities: data,
+    commodities: obj,
   };
 };
 

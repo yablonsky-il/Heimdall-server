@@ -1,11 +1,11 @@
-/* eslint-disable no-console */
-import cheerio from 'cheerio';
-import request from 'request-promise';
-import { CronJob } from 'cron';
+import * as cheerio from 'cheerio';
+import * as request from 'request-promise';
+import * as cron from 'cron';
 
 import { db } from '../../services/connect-to-db';
 import { parseCurrencies } from '../../helpers/parse';
-import { checkDay, throwError } from '../../helpers/util';
+import { checkDay } from '../../helpers/util';
+import { throwError } from '../../helpers/errors';
 import { PARSE_URL } from '../../constants';
 
 const url = `${PARSE_URL}/currencies`;
@@ -21,5 +21,5 @@ const requestCurrencies = () => request(url)
   .catch(err => throwError(err));
 
 /* Make request at 23:00 every evening (besides Saturday and Sunday) */
-export const job = new CronJob('0 23 * * *', () =>
+export const job = new cron.CronJob('0 23 * * *', () =>
   checkDay() ? requestCurrencies() : false);

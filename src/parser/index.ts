@@ -9,7 +9,7 @@ import { job as corporateTaxRateJob } from './corporate-tax-rate/corporate-tax-r
 import { job as governmentDebtToDGPJob } from './government-debt-to-GDP/government-debt-to-GDP';
 import { job as personalIncomeTaxRateJob } from './personal-income-tax-rate/personal-income-tax-rate';
 
-export const jobs = [
+export const jobs: Array<any> = [
   stocksJob,
   currencyJob,
   inflationJob,
