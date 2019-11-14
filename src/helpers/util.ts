@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 import * as R from 'ramda';
 import { WEEK_DAYS } from '../constants';
 
