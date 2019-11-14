@@ -1,0 +1,38 @@
+/* eslint-disable no-console */
+import * as crypto from 'crypto';
+import * as R from 'ramda';
+import { WEEK_DAYS } from '../constants';
+
+export const checkDay = () => {
+  const day = new Date().getDay();
+
+  if (day !== WEEK_DAYS.Saturday && day !== WEEK_DAYS.Sunday) {
+    return true;
+  }
+
+  return false;
+};
+
+const checkDateValue = value => value.length > 1 ? value : `0${value}`;
+
+export const getDate = () => {
+  const date = new Date();
+
+  const day = checkDateValue(date.getDate().toString());
+  const month = checkDateValue(R.inc(date.getMonth()).toString());
+  const year = date.getFullYear().toString();
+
+  return { day, month, year };
+};
+
+export const throwError = (err) => {
+  console.log(err);
+  throw err;
+};
+
+export const getHash = (password) => {
+  const hmac = crypto.createHash('sha256');
+  hmac.update(password);
+
+  return hmac.digest('hex');
+};
