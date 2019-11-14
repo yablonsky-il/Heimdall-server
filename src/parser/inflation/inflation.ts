@@ -1,11 +1,11 @@
-/* eslint-disable no-console */
-import cheerio from 'cheerio';
-import request from 'request-promise';
-import { CronJob } from 'cron';
+import * as cheerio from 'cheerio';
+import * as request from 'request-promise';
+import * as cron from 'cron';
 
 import { db } from '../../services/connect-to-db';
 import { parseAnyIndicator } from '../../helpers/parse';
-import { getDate, throwError } from '../../helpers/util';
+import { getDate } from '../../helpers/util';
+import { throwError } from '../../helpers/errors';
 import { PARSE_URL } from '../../constants';
 
 const url = `${PARSE_URL}/country-list/inflation-rate`;
@@ -21,4 +21,4 @@ const requestInflations = () => request(url)
   .catch(err => throwError(err));
 
 /* Make request at 23:00 on 5 day every month */
-export const job = new CronJob('0 23 5 * *', () => requestInflations());
+export const job = new cron.CronJob('0 23 5 * *', () => requestInflations());

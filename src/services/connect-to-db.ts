@@ -1,16 +1,16 @@
 /* eslint-disable no-console */
 import { MongoClient } from 'mongodb';
 
-import { throwError } from '../helpers/util';
+import { throwError } from '../helpers/errors';
 
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME,
 } = process.env;
 
 // eslint-disable-next-line import/no-mutable-exports
-export let db;
+export let db: any;
 
-export const connectToDB = (initServer: Function) => MongoClient.connect(
+export const connectToDB = (initServer: Function): Promise<void> => MongoClient.connect(
   `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
   { useNewUrlParser: true },
 )

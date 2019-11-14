@@ -1,0 +1,24 @@
+image: node:12.4.0
+
+cache:
+  untracked: true
+  paths:
+    - node_modules/
+
+stages:
+  - install
+  - lint
+
+Install:
+  stage: install
+  script: yarn
+  cache:
+      paths:
+        - node_modules/
+
+Lint:
+  stage: lint
+  script: yarn lint
+  cache:
+    paths:
+      - node-modules/

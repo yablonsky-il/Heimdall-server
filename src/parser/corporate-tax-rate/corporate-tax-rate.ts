@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
-import cheerio from 'cheerio';
-import request from 'request-promise';
-import { CronJob } from 'cron';
+import * as cheerio from 'cheerio';
+import * as request from 'request-promise';
+import * as cron from 'cron';
 
 import { db } from '../../services/connect-to-db';
 import { parseAnyIndicator } from '../../helpers/parse';
-import { getDate, throwError } from '../../helpers/util';
+import { getDate } from '../../helpers/util';
+import { throwError } from '../../helpers/errors';
 import { PARSE_URL } from '../../constants';
 
 const url = `${PARSE_URL}/country-list/corporate-tax-rate`;
@@ -21,4 +22,4 @@ const requestCorporateTaxRate = () => request(url)
   .catch(err => throwError(err));
 
 /* Make request at 23:00 on day-of-month 25 in April */
-export const job = new CronJob('0 23 25 4 *', () => requestCorporateTaxRate());
+export const job = new cron.CronJob('0 23 25 4 *', () => requestCorporateTaxRate());
