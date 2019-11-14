@@ -1,5 +1,6 @@
-/node_modules
-/med-api-v1
-/dist
+node_modules
+dist
+med-api-v1
+yarn-error.log
 .env
 .DS_Store

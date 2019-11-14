@@ -4,7 +4,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: path.join(path.resolve(), 'src/server.js'),
+  // entry: path.join(path.resolve(), 'src/server.js'),
+  entry: path.join(path.resolve(), 'src/server.ts'),
   output: {
     path: path.resolve('dist'),
     filename: 'server.js',
@@ -15,6 +16,9 @@ module.exports = {
     __filename: false,
   },
   externals: [nodeExternals()],
+  resolve: {
+    extensions: ['.ts', '.js'],
+  },
   module: {
     rules: [
       {
@@ -25,8 +29,12 @@ module.exports = {
         },
       },
       {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+      },
+      {
         test: /\.html$/,
-        use: [{ loader: 'html-loader' }]
+        use: [{ loader: 'html-loader' }],
       },
     ],
   },
