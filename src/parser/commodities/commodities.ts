@@ -1,5 +1,6 @@
 import * as cheerio from 'cheerio';
 import * as request from 'request-promise';
+import * as R from 'ramda';
 import * as cron from 'cron';
 
 import { parseCommodities } from '../../helpers/parse';

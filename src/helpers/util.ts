@@ -2,7 +2,7 @@
 import * as crypto from 'crypto';
 import * as R from 'ramda';
 
-import { GetDate } from '../interfaces/helpers/util';
+import { GetDate } from '../interfaces/helpers';
 
 import { WEEK_DAYS } from '../constants';
 
@@ -16,7 +16,10 @@ export const checkDay = (): boolean => {
   return false;
 };
 
-const checkDateValue = (value: string): string => value.length > 1 ? value : `0${value}`;
+const checkDateValue = (value: string): string =>
+  value.length > 1
+    ? value
+    : `0${value}`;
 
 export const getDate = (): GetDate => {
   const date: Date = new Date();

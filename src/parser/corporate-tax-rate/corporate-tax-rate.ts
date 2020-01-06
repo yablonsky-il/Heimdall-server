@@ -22,4 +22,4 @@ const requestCorporateTaxRate = () => request(url)
   .catch(err => throwError(err));
 
 /* Make request at 23:00 on day-of-month 25 in April */
-export const job = new cron.CronJob('0 23 25 4 *', () => requestCorporateTaxRate());
+export const job = new cron.CronJob('0 23 25 4 *', requestCorporateTaxRate);

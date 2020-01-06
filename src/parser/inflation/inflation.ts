@@ -21,4 +21,4 @@ const requestInflations = () => request(url)
   .catch(err => throwError(err));
 
 /* Make request at 23:00 on 5 day every month */
-export const job = new cron.CronJob('0 23 5 * *', () => requestInflations());
+export const job = new cron.CronJob('0 23 5 * *', requestInflations);

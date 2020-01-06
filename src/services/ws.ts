@@ -1,5 +1,7 @@
+import { Client } from '../interfaces/ws';
+
 /* eslint-disable no-console */
-export const WsClientConnection = (client) => {
+export const WsClientConnection = (client: Client): void => {
   console.log('User connected...');
 
   client.on('disconnect', () => console.log('User disconnected'));

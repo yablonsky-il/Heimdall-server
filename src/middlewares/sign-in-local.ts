@@ -17,7 +17,7 @@ passport.use(new LocalStrategy({
   db.collection('users')
     .findOne({ email: enteredEmail })
     .then(R.ifElse(
-      user => R.or(R.isNil(user), !isValidPass(enteredPassword, user.password)),
+      user => R.isNil(user) || !isValidPass(enteredPassword, user.password),
       () => done(null, false),
       user => done(null, user)
     ))

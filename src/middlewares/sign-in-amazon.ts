@@ -26,10 +26,10 @@ router.get(
     failureRedirect: '/sign-in-amazon'
   }),
   (req, res) => {
-    console.log(req.user, 'res');
+    // console.log(req.user, 'res');
 
     res.status(200).send({
       response: req.user,
     });
-  }
+  },
 );

@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { MongoClient } from 'mongodb';
 
+import { Db } from '../interfaces/connect-to-db';
 import { throwError } from '../helpers/errors';
 
 const {
@@ -8,7 +9,7 @@ const {
 } = process.env;
 
 // eslint-disable-next-line import/no-mutable-exports
-export let db: any;
+export let db: Db;
 
 export const connectToDB = (initServer: Function): Promise<void> => MongoClient.connect(
   `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
@@ -19,4 +20,4 @@ export const connectToDB = (initServer: Function): Promise<void> => MongoClient.
     db = client.db(DB_NAME);
     initServer();
   })
-  .catch(err => throwError(err));
+  .catch(throwError);

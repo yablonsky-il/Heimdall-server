@@ -26,13 +26,13 @@ router.get(
   '/auth/google/callback',
   passport.authenticate('google', {
     // successRedirect: '/auth-success',
-    failureRedirect: '/sign-in-google'
+    failureRedirect: '/sign-in-google',
   }),
   (req, res) => {
-    console.log(req.user, 'res');
+    // console.log(req.user, 'res');
 
     res.status(200).send({
       response: req.user,
     });
-  }
+  },
 );

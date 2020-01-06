@@ -8,9 +8,9 @@ import { checkDay } from '../../helpers/util';
 import { throwError } from '../../helpers/errors';
 import { PARSE_URL } from '../../constants';
 
-const url: string = `${PARSE_URL}/stocks`;
+const url = `${PARSE_URL}/stocks`;
 
-const requestStocks = () => request(url)
+const requestStocks = (): any => request(url)
   .then((document: string) => parseStocks(cheerio.load(document)))
   .then((data: any) => {
     db.collection('stocks')

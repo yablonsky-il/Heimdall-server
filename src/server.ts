@@ -17,8 +17,6 @@ socketIo.on('connection', WsClientConnection);
 
 app.use(middlewares);
 
-console.log(process.env.NODE_ENV, 'env');
-
 app.get('*', (req, res) => res.status(404).send('Page is not found'));
 
 connectToDB(() => {

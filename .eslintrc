@@ -1,23 +1,23 @@
 {
-  "parser": "babel-eslint",
+  // "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "airbnb",
-    "plugin:ramda/recommended"
+    "plugin:ramda/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
+    "@typescript-eslint",
     "ramda",
-    "jest",
-    "prettier"
+    "jest"
   ],
   "globals": {
-    "document": true,
-    "window": true,
     "shallow": false,
     "render": false,
-    "mount": false,
-    "APP_CONFIG": true
+    "mount": false
   },
   "rules": {
+    // "@typescript-eslint/rule-name": "error",
     "padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": "*", "next": "return" },
@@ -29,7 +29,6 @@
     "no-underscore-dangle": 0,
     "lines-between-class-members": 0,
     "implicit-arrow-linebreak": 0,
-    "jsx-a11y/label-has-for": 0,
     "no-debugger": 1,
     "comma-dangle": ["error", "always-multiline"],
     "max-len": [
@@ -52,6 +51,10 @@
         "props": false
       }
     ],
+    "no-console": "error",
+    // "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+    "@typescript-eslint/no-explicit-any": 0,
+    "import/no-unresolved": 0,
     "import/no-extraneous-dependencies": 0,
     "no-array-constructor": 0,
     "import/prefer-default-export": 0,
@@ -74,7 +77,7 @@
   },
   "env": {
     "es6": true,
-    "browser": true,
+    "node": true,
     "jest": true
   }
 }

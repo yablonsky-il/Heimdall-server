@@ -2,7 +2,7 @@
 
 import { getDate } from './util';
 
-const NEEDED_CURRENCIES_AMOUNT: number = 6;
+const NEEDED_CURRENCIES_AMOUNT = 6;
 
 const comoditiesKeys: ReadonlyArray<string> = [
   'energy',
