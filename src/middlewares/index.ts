@@ -1,10 +1,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import helmet from 'helmet';
 import compression from 'compression';
-import morgan from 'morgan';
 import passport from 'passport';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import cors from 'cors';
 
 import { router as routerMiddleware } from '../routes/index';
 import { router as signInLocaly } from './sign-in-local';
@@ -15,6 +16,7 @@ export const router = express.Router();
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
+router.use(cors())
 router.use(morgan('dev'));
 router.use(helmet());
 router.use(compression());

@@ -1,4 +1,5 @@
 node_modules
+heimdall-server
 dist
 med-api-v1
 yarn-error.log
