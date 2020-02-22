@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
-import * as crypto from 'crypto';
+import crypto from 'crypto';
 import * as R from 'ramda';
 
-import { GetDate } from '../interfaces/helpers';
+import { GetDate } from '../interfaces';
 
 import { WEEK_DAYS } from '../constants';
 

@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */
+import { Request, Response } from 'express';
 import * as R from 'ramda';
 
 import {
@@ -8,21 +8,12 @@ import {
   getCommoditiesBySpehereByParam as getCommoditiesBySpehereByParamModel,
 } from '../../models/commodities/commodities';
 
-export const getAllCommodities = (req, res): Promise<any> =>
+export const getAllCommodities = (req: Request, res: Response): Promise<any> =>
   getAllCommoditiesModel()
     .then((data: any) => res.status(200).json(data))
     .catch((err: any) => res.status(500).send(err));
 
-export const getCommoditiesBySpehere = (req, res): void => {
-  const { sphere } = req.params;
-  const query = `commodities.${sphere}`;
-
-  getCommoditiesBySpehereModel(query)
-    .then((data: any) => res.status(200).json(data))
-    .catch((err: any) => res.status(500).send(err));
-};
-
-export const getCommoditiesByDate = (req, res): void => {
+export const getCommoditiesByDate = (req: Request, res: Response): void => {
   const { date } = req.params;
   const [day, month, year] = date.split('-');
 
@@ -31,7 +22,16 @@ export const getCommoditiesByDate = (req, res): void => {
     .catch((err: any) => res.status(500).send(err));
 };
 
-export const getCommoditiesBySpehereByParam = (req, res): void => {
+export const getCommoditiesBySpehere = (req: Request, res: Response): void => {
+  const { sphere } = req.params;
+  const query = `commodities.${sphere}`;
+
+  getCommoditiesBySpehereModel(query)
+    .then((data: any) => res.status(200).json(data))
+    .catch((err: any) => res.status(500).send(err));
+};
+
+export const getCommoditiesBySpehereByParam = (req: Request, res: Response): void | Response => {
   const { sphere, param } = req.params;
   const query = `commodities.${sphere}`;
   const [key, value] = param.split('=');

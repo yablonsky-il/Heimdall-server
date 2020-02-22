@@ -1,17 +1,16 @@
-import * as cheerio from 'cheerio';
-import * as request from 'request-promise';
-import * as R from 'ramda';
-import * as cron from 'cron';
+import cheerio from 'cheerio';
+import request, { RequestPromise } from 'request-promise';
+import cron from 'cron';
 
 import { parseCommodities } from '../../helpers/parse';
 import { checkDay } from '../../helpers/util';
-import { throwError } from '../../helpers/errors';
+import { throwError } from '../../helpers/info';
 import { PARSE_URL } from '../../constants';
 import { insertCommodities } from '../../models/commodities/commodities';
 
 const url = `${PARSE_URL}/commodities`;
 
-const requestCommodities = () => request(url)
+const requestCommodities = (): Promise<RequestPromise> => request(url)
   .then(document => parseCommodities(cheerio.load(document)))
   .then(insertCommodities)
   .catch(throwError);

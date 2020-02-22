@@ -1,4 +1,4 @@
-import { Client } from '../interfaces/ws';
+import { Client } from '../interfaces';
 
 /* eslint-disable no-console */
 export const WsClientConnection = (client: Client): void => {

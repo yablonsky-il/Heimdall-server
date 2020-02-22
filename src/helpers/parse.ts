@@ -1,5 +1,3 @@
-/* eslint-disable newline-per-chained-call */
-
 import { getDate } from './util';
 
 const NEEDED_CURRENCIES_AMOUNT = 6;

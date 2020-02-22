@@ -1,14 +1,12 @@
-/* eslint-disable no-console */
 import { MongoClient } from 'mongodb';
 
-import { Db } from '../interfaces/connect-to-db';
-import { throwError } from '../helpers/errors';
+import { Db } from '../interfaces';
+import { throwError } from '../helpers/info';
 
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME,
 } = process.env;
 
-// eslint-disable-next-line import/no-mutable-exports
 export let db: Db;
 
 export const connectToDB = (initServer: Function): Promise<void> => MongoClient.connect(
@@ -16,6 +14,7 @@ export const connectToDB = (initServer: Function): Promise<void> => MongoClient.
   { useNewUrlParser: true },
 )
   .then((client) => {
+    // eslint-disable-next-line no-console
     console.log('Connected to MongoDB!');
     db = client.db(DB_NAME);
     initServer();

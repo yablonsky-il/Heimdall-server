@@ -1,5 +1,4 @@
-/* eslint-disable consistent-return */
-import * as express from 'express';
+import express from 'express';
 
 import {
   getAllCommodities,
@@ -25,7 +24,7 @@ router.get(`/${API_PARAM}/${indicator}`, getAllCommodities);
  * @return {array} -> [{},{},...]
  * @example -> [{ id: number, commoditie: string, value: string }, ...]
  */
-router.get(`/${API_PARAM}/${indicator}/sphere/:sphere`, getCommoditiesByDate);
+router.get(`/${API_PARAM}/${indicator}/sphere/:sphere`, getCommoditiesBySpehere);
 
 /**
  * get document by :date
@@ -33,7 +32,7 @@ router.get(`/${API_PARAM}/${indicator}/sphere/:sphere`, getCommoditiesByDate);
  * @return {object}
  * @example -> { id: string, date: object, commodities: array }
  */
-router.get(`/${API_PARAM}/${indicator}/date/:date`, getCommoditiesBySpehere);
+router.get(`/${API_PARAM}/${indicator}/date/:date`, getCommoditiesByDate);
 
 /**
  * get array data by :param (key) by :sphere from all documents

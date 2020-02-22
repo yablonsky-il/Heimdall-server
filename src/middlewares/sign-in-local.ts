@@ -1,6 +1,6 @@
-import * as express from 'express';
-import * as passport from 'passport';
-import * as stategy from 'passport-local';
+import express from 'express';
+import passport from 'passport';
+import stategy from 'passport-local';
 import * as R from 'ramda';
 
 import { db } from '../services/connect-to-db';

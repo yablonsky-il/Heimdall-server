@@ -2,7 +2,7 @@ import {
   Env,
   WeekDays,
   Authentication,
-} from './interfaces/constants';
+} from './interfaces';
 
 export const { PARSE_URL } = process.env;
 

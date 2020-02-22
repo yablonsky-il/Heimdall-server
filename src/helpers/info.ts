@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 export const throwError = (err: any) => {
-  console.info(err);
+  console.info('Error here!: ', err);
 
-  throw err;
+  return err;
 };
 
 export const throwSuccess = (success: any): void => {

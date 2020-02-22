@@ -4,9 +4,15 @@
       "allowJs": true,
       "target": "es5",
       "moduleResolution": "node",
-      "sourceMap": true
+      "sourceMap": true,
+      "declaration": true,
+      "noImplicitAny": true,
+      "esModuleInterop": true
   },
   "include": [
       "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
   ]
 }

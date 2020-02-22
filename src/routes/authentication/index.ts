@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 
 // import { router as signIn } from './sign-in';
 import { router as signUp } from './sign-up';

@@ -1,8 +1,6 @@
 {
-  // "parser": "babel-eslint",
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "airbnb",
     "plugin:ramda/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -11,18 +9,17 @@
     "ramda",
     "jest"
   ],
-  "globals": {
-    "shallow": false,
-    "render": false,
-    "mount": false
-  },
   "rules": {
     // "@typescript-eslint/rule-name": "error",
     "padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": "*", "next": "return" },
       { "blankLine": "always", "prev": "block-like", "next": "*" },
-      { "blankLine": "always", "prev": "*", "next": "block-like" }
+      { "blankLine": "always", "prev": "*", "next": "block-like" },
+      { "blankLine": "always", "prev": "*", "next": "block-like" },
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
+      { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
+      { "blankLine": "always", "prev": "function", "next": "function" }
     ],
     "no-multiple-empty-lines": ["error", { "max": 1 }],
     "prefer-destructuring": ["error", { "object": true, "array": false }],
@@ -53,6 +50,7 @@
     ],
     "no-console": "error",
     // "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+    "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "import/no-unresolved": 0,
     "import/no-extraneous-dependencies": 0,

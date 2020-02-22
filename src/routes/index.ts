@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 
 import { router as messenger } from './web-messenger/web-messenger';
 import { router as authentication } from './authentication/index';

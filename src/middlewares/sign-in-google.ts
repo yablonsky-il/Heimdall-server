@@ -1,6 +1,6 @@
-import * as express from 'express';
-import * as passport from 'passport';
-import * as stategy from 'passport-google-oauth';
+import express from 'express';
+import passport from 'passport';
+import stategy from 'passport-google-oauth';
 
 export const router = express.Router();
 const GoogleStrategy = stategy.OAuth2Strategy;

@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 
 import { db } from '../../services/connect-to-db';
 import { API_PARAM } from '../../constants';

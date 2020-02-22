@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import { API_PARAM } from '../../constants';
 
 export const router = express.Router();

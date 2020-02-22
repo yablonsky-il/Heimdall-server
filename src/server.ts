@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
-import * as http from 'http';
-import * as express from 'express';
-import * as socket from 'socket.io';
+import http from 'http';
+import express from 'express';
+import socket from 'socket.io';
 
 import { WsClientConnection } from './services/ws';
 import { connectToDB } from './services/connect-to-db';
@@ -20,6 +19,7 @@ app.use(middlewares);
 app.get('*', (req, res) => res.status(404).send('Page is not found'));
 
 connectToDB(() => {
+  // eslint-disable-next-line no-console
   server.listen(port, (): void => console.log(`Server is listening on ${port} port`));
 });
 

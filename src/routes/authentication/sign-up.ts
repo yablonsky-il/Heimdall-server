@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import * as R from 'ramda';
 
 import { db } from '../../services/connect-to-db';
